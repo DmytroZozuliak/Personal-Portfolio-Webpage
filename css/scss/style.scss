@@ -1,0 +1,283 @@
+// <МИКСИНЫ>============================================
+
+// </МИКСИНЫ>===========================================
+// <ШРИФТЫ>=============================================
+// <ПОДКЛЮЧАЕМ ШРИФТЫ>==================================
+
+// </ПОДКЛЮЧАЕМ ШРИФТЫ>=================================
+// <ШРИФТ ПО УМОЛЧАНИЮ==================================
+
+// </ШРИФТ ПО УМОЛЧАНИЮ=================================
+// </ШРИФТЫ>============================================
+// <ПЕРЕМЕННЫЕ==========================================
+$redColor: rgb(190, 49, 68);
+$whiteColor: rgb(240, 240, 240);
+$greyColor: rgb(48, 56, 65);
+$blueColor: #45567d;
+$orangeColor: #ff7f50;
+$darkColor1: rgb(54, 57, 60);
+$darkColor2: rgb(27, 26, 29);
+
+// </ПЕРЕМЕННЫЕ=========================================
+// <ОБНУЛЕНИЕБ ОБЩИЕ ПАРАМЕТРЫ==========================
+@import '_reset';
+html,
+body {
+  /* Set font size for easy rem calculations
+	 * default document font size = 16px, 1rem = 16px, 100% = 16px
+	 * (100% / 16px) * 10 = 62.5%, 1rem = 10px, 62.5% = 10px
+	*/
+  font-size: 62.5%;
+  scroll-behavior: smooth;
+  font-family: 'Open Sans', Arial, sans-serif;
+}
+
+/* A few media query to set some font sizes at different screen sizes.
+ * This helps automate a bit of responsiveness.
+ * The trick is to use the rem unit for size values, margin and padding.
+ * Because rem is relative to the document font size
+ * when we scale up or down the font size on the document
+ * it will affect all properties using rem units for the values.
+*/
+
+/* I am using the em unit for breakpoints
+ * The calculation is the following
+ * screen size divided by browser base font size
+ * As an example: a breakpoint at 980px
+ * 980px / 16px = 61.25em
+*/
+
+/* 1200px / 16px = 75em */
+@media (max-width: 75em) {
+  html {
+    font-size: 60%;
+  }
+}
+
+/* 980px / 16px = 61.25em */
+@media (max-width: 61.25em) {
+  html {
+    font-size: 58%;
+  }
+}
+
+/* 460px / 16px = 28.75em */
+@media (max-width: 28.75em) {
+  html {
+    font-size: 55%;
+  }
+}
+// </ОБНУЛЕНИЕБ ОБЩИЕ ПАРАМЕТРЫ=========================
+// <ОСНОВНОЙ КОД========================================
+h1,
+h2 {
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+}
+
+h1 {
+  font-size: 6rem;
+}
+
+h2 {
+  font-size: 4.2rem;
+}
+
+a {
+  text-decoration: none;
+  color: $whiteColor;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem; /* 18px */
+  font-weight: 400;
+  line-height: 1.4;
+  color: $whiteColor;
+  min-width: 260px;
+}
+
+// navbar
+
+.navbar {
+  background: $redColor;
+  position: fixed;
+  top: 0;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  box-shadow: 0 2px 0 rgba(0, 0, 0, 0.4);
+  z-index: 100;
+  &__list {
+    list-style: none;
+    display: flex;
+    margin-right: 2.5rem;
+  }
+
+  &__link {
+    text-decoration: none;
+    color: $whiteColor;
+    font-size: 2.2rem;
+    display: block;
+    padding: 2rem;
+    &:hover {
+      background: $blueColor;
+    }
+  }
+}
+
+// Welcome
+
+.welcome-section {
+  $darkColor1: rgb(54, 57, 60);
+  background: linear-gradient(90deg, $darkColor1, $darkColor2);
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  p {
+    font-weight: 200;
+    font-style: italic;
+    color: $blueColor;
+    font-size: 3rem;
+    text-align: center;
+  }
+}
+
+// projects
+
+.projects {
+  background: $blueColor;
+  text-align: center;
+  padding-bottom: 10rem;
+  &__project-tile {
+    padding: 10rem 2rem 2rem;
+    display: inline-block;
+    border-bottom: 2px solid $whiteColor;
+    margin-bottom: 20rem;
+  }
+
+  &__elements {
+    margin: 0px auto 3rem auto;
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(100px, 1fr));
+    grid-gap: 2.5rem;
+  }
+}
+
+.project-block {
+  //   max-width: 30%;
+
+  a:hover span {
+    color: $orangeColor;
+  }
+  &__img {
+    height: 30rem;
+    object-fit: cover;
+  }
+
+  &__title {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    color: $whiteColor;
+    font-size: 2rem;
+    background: $greyColor;
+    overflow: hidden;
+  }
+  &__button {
+    background: $greyColor;
+    padding: 1rem 3rem 1rem 1rem;
+    color: $whiteColor;
+    position: relative;
+    width: 200px;
+    margin: 0px auto;
+    cursor: pointer;
+    .arrow {
+      font-size: 3rem;
+      font-weight: bold;
+      position: absolute;
+      right: 25%;
+      top: 0;
+    }
+    &:hover {
+      background: $redColor;
+    }
+  }
+}
+
+// footer
+
+.footer {
+  background: $greyColor;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+
+  h1 {
+    padding-top: 10rem;
+    font-size: 6rem;
+    padding-bottom: 0.5rem;
+  }
+  p {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-style: italic;
+  }
+  &__social-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin: 5rem auto;
+    max-width: 1000px;
+  }
+}
+.social-block {
+  //   margin: 1rem 3rem 3rem 3rem;
+  margin-bottom: 4rem;
+
+  &__title {
+    font-size: 2.5rem;
+    padding: 2rem 3rem 3rem 3rem;
+  }
+  i {
+    padding-right: 1rem;
+  }
+  &:hover {
+    transform: translateY(1.2rem);
+    transition: all 0.4s ease;
+  }
+}
+
+// medi
+@media (max-width: 991.9px) {
+}
+@media (max-width: 640px) {
+  .projects {
+    &__elements {
+      margin: 0px auto 3rem auto;
+      grid-template-columns: repeat(1, minmax(100px, 1fr));
+    }
+    &__project-tile {
+      font-size: 3rem;
+    }
+  }
+  h1 {
+    font-size: 4rem;
+  }
+  .footer {
+    h1 {
+      font-size: 4rem;
+    }
+  }
+}
+@media (max-width: 575.9px) {
+}
+
+// </ОСНОВНОЙ КОД=======================================
